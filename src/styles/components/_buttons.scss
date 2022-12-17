@@ -1,0 +1,13 @@
+.btn {
+  width: fit-content;
+  height: 4rem;
+  border: none;
+  border-radius: 0.8rem;
+
+  &--primary {
+    font-weight: var(--fw-500);
+    padding-inline: 3rem;
+    color: var(--clr-500);
+    background-color: var(--bg-btn);
+  }
+}
