@@ -1,10 +1,14 @@
 @forward "utilities";
+@forward "components";
+@forward "sections";
 @forward "pages";
+@forward "hoc";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap");
 
 body {
   font-family: "Noto Sans", sans-serif;
   font-size: 1.6rem;
+  min-height: 100vh;
   color: var(--clr-500);
   background-color: var(--bg);
 }

@@ -13,6 +13,7 @@ const { login } = slice.actions;
 
 export function setUser(user: User) {
   state.dispatch(login({ user }));
+  localStorage.setItem("dvc-chat-app-user-id", user.id);
 }
 
 export function addUser(user: User) {

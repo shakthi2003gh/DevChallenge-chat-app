@@ -1,0 +1,31 @@
+.create-user-modal {
+  width: clamp(35rem, 90%, 65.6rem);
+  margin-inline: auto;
+  padding: 3.4rem 4rem;
+  border-radius: 2.4rem;
+  background-color: var(--bg-menu);
+
+  .title {
+    font-size: var(--fs-700);
+    text-transform: uppercase;
+  }
+
+  input {
+    width: 100%;
+    padding: 1.15rem 1.55rem;
+    margin-block: 2.6rem 2.1rem;
+    border: none;
+    border-radius: 8px;
+    color: var(--clr-500);
+    background-color: var(--bg-text-area);
+
+    ::placeholder {
+      color: var(--clr-100);
+    }
+  }
+
+  button {
+    display: block;
+    margin-inline: auto 0;
+  }
+}
