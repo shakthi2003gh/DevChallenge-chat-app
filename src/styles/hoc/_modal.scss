@@ -1,0 +1,8 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  background-color: var(--drop-shadow);
+  z-index: 54658;
+}
