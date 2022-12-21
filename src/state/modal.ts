@@ -21,3 +21,8 @@ export function hideModal() {
 }
 
 export default slice.reducer;
+
+export interface Modal {
+  name: string;
+  props: any;
+}

@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
+import { State } from "../state";
 import { CreateUserModal } from "./../sections";
 
 const Modal = ({ children: Children }: { children: any }) => {
-  const modal = useSelector((state: any) => state.entities.modal);
+  const modal = useSelector((state: State) => state.entities.modal);
 
   return (
     <>
