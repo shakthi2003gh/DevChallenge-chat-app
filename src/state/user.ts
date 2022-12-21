@@ -3,13 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const slice = createSlice({
   name: "user",
-  initialState: {} as User,
+  initialState: {},
   reducers: {
     login: (_user, action) => action.payload.user,
+    logout: () => ({}),
   },
 });
 
-const { login } = slice.actions;
+const { login, logout: remove } = slice.actions;
 
 export function setUser(user: User) {
   state.dispatch(login({ user }));
@@ -18,6 +19,11 @@ export function setUser(user: User) {
 
 export function addUser(user: User) {
   state.dispatch({ type: "user/created", payload: { user } });
+}
+
+export function logout() {
+  state.dispatch(remove());
+  localStorage.setItem("dvc-chat-app-user-id", "");
 }
 
 export default slice.reducer;
