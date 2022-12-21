@@ -1,0 +1,40 @@
+.sidebar {
+  position: relative;
+  width: 80%;
+  max-width: 32.5rem;
+  height: 100vh;
+  background-color: var(--bg-menu);
+  transform: translateX(-120%);
+  transition: transform 0.5s ease;
+
+  &.show {
+    transform: translateX(0);
+  }
+
+  .close {
+    position: absolute;
+    top: 1.2rem;
+    right: -5.5rem;
+    display: inline-block;
+    font-size: 2rem;
+    padding: 0.8rem;
+    border-radius: 1.2rem;
+    color: var(--clr-700);
+    background-color: inherit;
+    cursor: pointer;
+  }
+
+  .profile {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    transform: translateX(0);
+
+    .close {
+      display: none;
+    }
+  }
+}
