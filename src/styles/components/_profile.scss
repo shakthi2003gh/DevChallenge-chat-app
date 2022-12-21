@@ -1,0 +1,54 @@
+.profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2.8rem;
+  padding: 1.6rem 2.8rem;
+  color: var(--clr-300);
+  background-color: var(--bg-profile);
+
+  img {
+    width: 42px;
+    aspect-ratio: 1;
+    border-radius: 7px;
+    object-fit: cover;
+  }
+
+  .name {
+    font-size: var(--fs-700);
+    font-weight: var(--fw-700);
+    text-transform: capitalize;
+  }
+
+  > .material-symbols-rounded {
+    width: fit-content;
+    margin-left: auto;
+    cursor: pointer;
+  }
+
+  .popup-menu {
+    position: absolute;
+    right: 2rem;
+    bottom: 60%;
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    background-color: var(--bg);
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.3rem;
+      border-radius: 0.8rem;
+
+      &.logout {
+        color: var(--clr-danger);
+        cursor: pointer;
+      }
+
+      &.active {
+        background-color: var(--bg-text-area);
+      }
+    }
+  }
+}
