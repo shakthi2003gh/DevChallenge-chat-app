@@ -1,0 +1,31 @@
+.main-menu {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.37rem;
+    padding-left: 2.8rem;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+    .title {
+      font-size: var(--fs-700);
+      font-weight: var(--fw-700);
+    }
+
+    .create-channel {
+      font-size: 22px;
+      padding: 0.5rem;
+      border-radius: 0.8rem;
+      background-color: var(--bg);
+      cursor: pointer;
+    }
+  }
+
+  .body {
+    padding: 2rem 2.8rem;
+
+    .groups {
+      margin-block: 3.5rem;
+    }
+  }
+}

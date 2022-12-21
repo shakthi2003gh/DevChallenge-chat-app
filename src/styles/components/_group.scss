@@ -1,0 +1,28 @@
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .group {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-size: var(--fs-700);
+    font-weight: var(--fw-600);
+    text-transform: uppercase;
+    cursor: pointer;
+
+    .icon {
+      display: grid;
+      place-content: center;
+      width: 4.2rem;
+      aspect-ratio: 1;
+      border-radius: 0.8rem;
+      background-color: var(--bg);
+    }
+
+    .name {
+      color: var(--clr-400);
+    }
+  }
+}
