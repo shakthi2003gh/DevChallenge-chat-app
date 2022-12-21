@@ -1,0 +1,30 @@
+.input {
+  width: 100%;
+  padding: 1.15rem 1.55rem;
+  margin-block: 2.6rem 2.1rem;
+  border: none;
+  border-radius: 8px;
+  color: var(--clr-500);
+  background-color: var(--bg-text-area);
+  resize: none;
+
+  ::placeholder {
+    color: var(--clr-100);
+  }
+}
+
+.input-group {
+  position: relative;
+
+  .material-symbols-rounded {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    font-size: 2.2rem;
+  }
+
+  .input {
+    padding-left: 4.5rem;
+    margin-block: 0;
+  }
+}

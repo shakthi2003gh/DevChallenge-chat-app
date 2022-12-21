@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { addUser } from "../state/user";
+import { Input } from "./../components";
 
 const CreateUserModal = ({ userId }: { userId: string }) => {
   const [name, setName] = useState("");
@@ -21,8 +22,7 @@ const CreateUserModal = ({ userId }: { userId: string }) => {
     <div className="create-user-modal">
       <div className="title">create your user name</div>
 
-      <input
-        type="text"
+      <Input
         placeholder="Username"
         value={name}
         onChange={(e: any) => setName(e.target.value)}
