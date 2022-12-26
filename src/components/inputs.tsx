@@ -1,4 +1,4 @@
-const Input = ({ type = "text", icon = "", ...props }) => {
+const Input = ({ type = "text", icon = "", buttonName = "", ...props }) => {
   if (type === "textarea")
     return <textarea className="input" {...props}></textarea>;
 
@@ -9,6 +9,19 @@ const Input = ({ type = "text", icon = "", ...props }) => {
         <input type="text" className="input" {...props} />
       </div>
     );
+
+  if (buttonName) {
+    const { onClick, ...inputProps } = props;
+
+    return (
+      <div className="input-group with-btn">
+        <input type="text" className="input" {...inputProps} />
+        <button className="material-symbols-rounded button" onClick={onClick}>
+          {buttonName}
+        </button>
+      </div>
+    );
+  }
 
   return <input type="text" className="input" {...props} />;
 };

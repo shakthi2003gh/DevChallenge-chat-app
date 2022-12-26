@@ -24,7 +24,22 @@
   }
 
   .input {
-    padding-left: 4.5rem;
     margin-block: 0;
+  }
+
+  &:not(.with-btn) .input {
+    padding-left: 4.5rem;
+  }
+
+  .button {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    left: auto;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 0.8rem;
+    color: var(--clr-700);
+    background-color: var(--bg-btn);
   }
 }
