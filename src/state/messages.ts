@@ -19,6 +19,10 @@ export function setMessages(messages: MessageInterface[]) {
   state.dispatch(set({ messages }));
 }
 
+export function sendMessage(id: string, message: MessageInterface) {
+  state.dispatch({ type: "messages/send", payload: { id, message } });
+}
+
 export default slice.reducer;
 
 export interface MessageInterface {

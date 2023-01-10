@@ -14,10 +14,10 @@ const Message = ({ photo, name, timestamp, message }: MessageInterface) => {
 
     const timeFormat = Intl.DateTimeFormat("en-in", { timeStyle: "short" });
 
-    if (date.getDate() === now.getDay() + 1)
+    if (date.getDate() === now.getDate())
       return "today at " + timeFormat.format(date);
 
-    if (date.getDate() === now.getDay())
+    if (date.getDate() === now.getDate() - 1)
       return "yesterday at " + timeFormat.format(date);
 
     const formatOption = Intl.DateTimeFormat("en-in", {

@@ -1,8 +1,12 @@
-import { createUser, getGroup, getMessages } from "../../services/firestore";
+import {
+  createUser,
+  getGroup,
+  getMessages,
+  setMessage,
+} from "../../services/firestore";
 import { hideModal } from "../modal";
 import { setUser } from "./../user";
 import { selectedGroup } from "./../selectedGroup";
-import { Timestamp } from "firebase/firestore";
 import {
   getMessages as requestMessages,
   MessageInterface,
@@ -27,6 +31,12 @@ const api = () => (next: any) => async (action: any) => {
 
     setMessages(messages);
     return;
+  }
+
+  if (action.type === "messages/send") {
+    const { id, message } = action.payload;
+
+    await setMessage(id, message);
   }
 
   next(action);

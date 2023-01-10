@@ -1,21 +1,55 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { State } from "../state";
 import { useSelector } from "react-redux";
 import { menuOpen } from "../state/menu";
 import { Input, Message } from "../components";
-import { MessageInterface } from "../state/messages";
+import { MessageInterface, getMessages } from "../state/messages";
+import { sendMessage } from "./../state/messages";
+import { onSnapshot, Timestamp } from "firebase/firestore";
+import { messageRef } from "./../services/firestore";
 
 const Chat = () => {
-  const { name: groupName } = useSelector(
+  const [text, setText] = useState("");
+  const user = useSelector((state: State) => state.user);
+  const { name, messagesId } = useSelector(
     (state: State) => state.entities.selectedGroup
   );
   const messages = useSelector((state: State) => state.messages);
 
   useEffect(() => {
+    const unsubscribe = onSnapshot(messageRef, (doc) => {
+      const newMessages = doc.data()?.[messagesId];
+
+      if (newMessages !== messages) getMessages(messagesId);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
     const container = document.querySelector(".messages") as HTMLDivElement;
     const containerHeight = container.scrollHeight;
     container.scrollTo({ top: containerHeight, behavior: "smooth" });
-  });
+  }, [messages]);
+
+  const handleTyping = (e: any) => {
+    setText(e.target.value);
+  };
+
+  const handleSend = (e: any) => {
+    if ((e.code === "Enter" || e.type === "click") && text.trim()) {
+      const message: MessageInterface = {
+        id: Date.now().toString(),
+        message: text,
+        name: user.name,
+        photo: user.photo,
+        timestamp: { ...Timestamp.now() },
+      };
+
+      setText("");
+      sendMessage(messagesId, message);
+    }
+  };
 
   return (
     <div className="chat">
@@ -23,7 +57,7 @@ const Chat = () => {
         <span className="material-symbols-rounded menu" onClick={menuOpen}>
           menu
         </span>
-        <span>{groupName}</span>
+        <span>{name}</span>
       </div>
 
       <div className="messages">
@@ -33,7 +67,14 @@ const Chat = () => {
       </div>
 
       <div className="messaging-area">
-        <Input buttonName="send" placeholder="Type a message here" />
+        <Input
+          buttonName="send"
+          placeholder="Type a message here"
+          value={text}
+          onChange={handleTyping}
+          onClick={handleSend}
+          onKeyUp={handleSend}
+        />
       </div>
     </div>
   );
