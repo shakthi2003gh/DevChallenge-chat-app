@@ -5,7 +5,13 @@ const MainMenu = () => {
   const [search, setSearch] = useState("");
 
   const handleSearch = (e: any) => {
-    setSearch(e.target.value);
+    const value = (e.target.value as string)
+      .replaceAll("[", "")
+      .replaceAll("(", "")
+      .replaceAll(")", "")
+      .replaceAll("\\", "");
+
+    setSearch(value);
   };
 
   return (
@@ -23,7 +29,7 @@ const MainMenu = () => {
           onChange={handleSearch}
         />
 
-        <Groups />
+        <Groups search={search} />
       </div>
     </div>
   );

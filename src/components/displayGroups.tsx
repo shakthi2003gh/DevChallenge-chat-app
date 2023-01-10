@@ -5,7 +5,7 @@ import { State } from "../state";
 import { setGroups, Group } from "../state/groups";
 import { selectGroup } from "../state/selectedGroup";
 
-const Groups = () => {
+const Groups = ({ search }: { search: string }) => {
   const userGroups = useSelector((state: State) => state.user.groupsId);
   const groups = useSelector((state: State) => state.groups);
   const { selectedGroup } = useSelector((state: State) => state.entities);
@@ -31,16 +31,20 @@ const Groups = () => {
 
   return (
     <div className="groups">
-      {groups.map((group) => (
-        <div
-          className="group"
-          key={group.id}
-          onClick={() => handleClick(group.id)}
-        >
-          <span className="icon">{group.name[0]}</span>
-          <span className="name">{group.name}</span>
-        </div>
-      ))}
+      {groups
+        .filter(({ name }) =>
+          search !== "" ? name.match(RegExp(search, "gi")) : true
+        )
+        .map((group) => (
+          <div
+            className="group"
+            key={group.id}
+            onClick={() => handleClick(group.id)}
+          >
+            <span className="icon">{group.name[0]}</span>
+            <span className="name">{group.name}</span>
+          </div>
+        ))}
     </div>
   );
 };
