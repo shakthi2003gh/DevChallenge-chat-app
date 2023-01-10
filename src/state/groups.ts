@@ -21,6 +21,6 @@ export interface Group {
   id: string;
   name: string;
   memberList: string[];
-  messagesColId: string;
+  messagesId: string;
   photo: string;
 }

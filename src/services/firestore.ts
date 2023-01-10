@@ -3,7 +3,8 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { User } from "./../state/user";
 
 const userRef = doc(db, "users", "k1In6xx8Fpk7pDG4GG1C");
-const groupsRef = doc(db, "groups", "CJh6IPfGkaZ8uKPpyuRN");
+const groupsRef = doc(db, "groups", "uM8ylGqyF7639R39wDHx");
+const messageRef = doc(db, "messagesRoom", "oxtEMWPFRsqTT9LjY0TQ");
 
 export async function getUsers() {
   const res = await getDoc(userRef);
@@ -24,16 +25,13 @@ export async function getGroups() {
   return res.data();
 }
 
-export async function getMessages(colId: string) {
-  const messageRef = doc(
-    db,
-    "groups",
-    "CJh6IPfGkaZ8uKPpyuRN",
-    "messages",
-    colId
-  );
+export async function getGroup(groupId: string) {
+  const groups = await getGroups();
+  return groups?.[groupId];
+}
 
+export async function getMessages(id: string) {
   const res = await getDoc(messageRef);
 
-  console.log(res.data());
+  return res.data()?.[id];
 }
