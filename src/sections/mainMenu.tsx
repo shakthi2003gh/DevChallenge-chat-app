@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Input, Groups } from "../components";
+import { displayModal } from "../state/modal";
 
 const MainMenu = () => {
   const [search, setSearch] = useState("");
@@ -14,11 +15,20 @@ const MainMenu = () => {
     setSearch(value);
   };
 
+  const handleClick = () => {
+    displayModal("createChannel", {});
+  };
+
   return (
     <div className="main-menu">
       <div className="header">
         <span className="title">Channels</span>
-        <span className="material-symbols-rounded create-channel">add</span>
+        <span
+          className="material-symbols-rounded create-channel"
+          onClick={handleClick}
+        >
+          add
+        </span>
       </div>
 
       <div className="body">

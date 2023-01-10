@@ -1,15 +1,19 @@
 import { useSelector } from "react-redux";
 import { State } from "../state";
-import { CreateUserModal } from "./../sections";
+import { CreateUserModal, CreateChannelModal } from "./../sections";
 
 const Modal = ({ children: Children }: { children: any }) => {
   const modal = useSelector((state: State) => state.entities.modal);
 
   return (
     <>
-      {Object.keys(modal).length !== 0 && modal.name === "createUser" && (
+      {Object.keys(modal).length !== 0 && (
         <div className="modal">
-          <CreateUserModal {...modal.props} />
+          {modal.name === "createUser" && <CreateUserModal {...modal.props} />}
+
+          {modal.name === "createChannel" && (
+            <CreateChannelModal {...modal.props} />
+          )}
         </div>
       )}
       {Children}

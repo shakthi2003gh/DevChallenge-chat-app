@@ -5,4 +5,28 @@
   place-content: center;
   background-color: var(--drop-shadow);
   z-index: 54658;
+
+  > div {
+    width: clamp(35rem, 90%, 65.6rem);
+    margin-inline: auto;
+    padding: 3.4rem 4rem;
+    border-radius: 2.4rem;
+    background-color: var(--bg-menu);
+
+    .title {
+      font-size: var(--fs-700);
+      font-weight: var(--fw-600);
+      text-transform: uppercase;
+    }
+
+    textarea {
+      min-height: 100px;
+      margin-block: 0 22px;
+    }
+
+    button {
+      display: block;
+      margin-inline: auto 0;
+    }
+  }
 }
