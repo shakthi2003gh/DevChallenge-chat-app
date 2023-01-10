@@ -23,7 +23,9 @@ const api = () => (next: any) => async (action: any) => {
   }
 
   if (action.type === "messages/get") {
-    const { messages } = await getMessages(action.payload.id);
+    const { messages } = (await getMessages(action.payload.id)) || {
+      messages: [],
+    };
 
     messages.forEach((message: MessageInterface) => {
       message.timestamp = { ...message.timestamp };

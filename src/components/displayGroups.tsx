@@ -22,7 +22,7 @@ const Groups = ({ search }: { search: string }) => {
       groups.push(groupsData?.[id]);
     });
 
-    setGroups(groups);
+    if (groups.length !== 0) setGroups(groups);
   };
 
   const handleClick = (id: string) => {

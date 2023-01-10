@@ -1,9 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { addUser } from "../state/user";
 import { Input } from "./../components";
 
-const CreateUserModal = ({ userId }: { userId: string }) => {
+const CreateUserModal = ({
+  userId,
+  photoURL,
+}: {
+  userId: string;
+  photoURL: string;
+}) => {
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (name.length === 0) return;
@@ -12,10 +20,11 @@ const CreateUserModal = ({ userId }: { userId: string }) => {
       id: userId,
       name,
       groupsId: [],
-      photo: "",
+      photo: photoURL,
     });
 
     setName("");
+    navigate("/");
   };
 
   return (

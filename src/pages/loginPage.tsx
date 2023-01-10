@@ -2,9 +2,9 @@ import { signIn } from "../services/auth";
 
 const LoginPage = ({ loginUser }: { loginUser: Function }) => {
   const handleLogin = async () => {
-    const userId = await signIn();
+    const { uid: userId, photoURL } = await signIn();
 
-    loginUser(userId);
+    loginUser(userId, photoURL);
   };
 
   return (

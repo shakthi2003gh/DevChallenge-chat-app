@@ -20,7 +20,7 @@ export default slice.reducer;
 export interface Group {
   id: string;
   name: string;
-  memberList: string[];
+  membersId: string[];
   messagesId: string;
-  photo: string;
+  depscription: string;
 }

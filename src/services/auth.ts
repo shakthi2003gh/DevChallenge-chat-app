@@ -5,6 +5,6 @@ const provider = new GoogleAuthProvider();
 
 export async function signIn() {
   const result = await signInWithPopup(auth, provider);
-  const userId = result.user.uid;
-  return userId;
+  const { uid, photoURL } = result.user;
+  return { uid, photoURL };
 }

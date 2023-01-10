@@ -12,7 +12,7 @@ function App() {
   const user = useSelector((state: State) => state.user);
   const navigate = useNavigate();
 
-  const loginUser = async (userId: string) => {
+  const loginUser = async (userId: string, photoURL = "") => {
     const users = await getUsers();
 
     if (users?.[userId]) {
@@ -20,7 +20,7 @@ function App() {
       navigate("/");
     } else {
       navigate("/login");
-      displayModal("createUser", { userId });
+      displayModal("createUser", { userId, photoURL });
     }
   };
 
