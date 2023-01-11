@@ -1,0 +1,71 @@
+.channel-menu {
+  padding-bottom: 5rem;
+  max-height: 100vh;
+  overflow: hidden auto;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.78rem;
+    padding-left: 2rem;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+    .title {
+      font-size: var(--fs-700);
+      font-weight: var(--fw-700);
+    }
+
+    .back {
+      font-size: 1.9rem;
+      margin-top: 0.2rem;
+      cursor: pointer;
+    }
+  }
+
+  .body {
+    font-size: var(--fs-700);
+    padding: 2.5rem 3.2rem;
+
+    .channel-name,
+    .channel-member-list .title {
+      font-weight: var(--fw-700);
+      text-transform: uppercase;
+    }
+
+    .channel-description {
+      font-size: var(--fs-500);
+      line-height: 2.2rem;
+      margin-block: 1.7rem 4rem;
+      opacity: 0.9;
+    }
+
+    .members {
+      display: grid;
+      gap: 2.5rem;
+      margin-block: 2.4rem;
+
+      .member {
+        display: flex;
+        align-items: center;
+        gap: 2.2rem;
+      }
+
+      img {
+        width: 4.2rem;
+        aspect-ratio: 1;
+        border-radius: 0.7rem;
+      }
+
+      .name {
+        font-size: var(--fs-700);
+        font-weight: var(--fw-600);
+        text-transform: capitalize;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow-x: hidden;
+        color: var(--clr-100);
+      }
+    }
+  }
+}

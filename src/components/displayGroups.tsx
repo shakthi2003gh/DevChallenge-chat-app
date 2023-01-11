@@ -6,6 +6,7 @@ import { State } from "../state";
 import { setUser, User } from "./../state/user";
 import { setGroups, Group } from "../state/groups";
 import { selectGroup } from "../state/selectedGroup";
+import { showChannelMenu } from "./../state/menu";
 
 const Groups = ({ search }: { search: string }) => {
   const user = useSelector((state: State) => state.user);
@@ -43,6 +44,7 @@ const Groups = ({ search }: { search: string }) => {
 
   const handleClick = (id: string) => {
     if (selectedGroup.id !== id) selectGroup(id);
+    showChannelMenu();
   };
 
   return (

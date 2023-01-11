@@ -3,7 +3,7 @@ import state from ".";
 
 const slice = createSlice({
   name: "menu",
-  initialState: { open: true, popupOpen: false },
+  initialState: { open: true, popupOpen: false, mainMenu: true },
   reducers: {
     open: (menu) => {
       menu.open = true;
@@ -17,10 +17,17 @@ const slice = createSlice({
     popupClose: (menu) => {
       menu.popupOpen = false;
     },
+    mainMenu: (menu) => {
+      menu.mainMenu = true;
+    },
+    channelMenu: (menu) => {
+      menu.mainMenu = false;
+    },
   },
 });
 
-const { open, close, popupOpen, popupClose } = slice.actions;
+const { open, close, popupOpen, popupClose, mainMenu, channelMenu } =
+  slice.actions;
 
 export function menuOpen() {
   state.dispatch(open());
@@ -36,9 +43,18 @@ export function popupMenuToggle() {
     : state.dispatch(popupOpen());
 }
 
+export function showMainMenu() {
+  state.dispatch(mainMenu());
+}
+
+export function showChannelMenu() {
+  state.dispatch(channelMenu());
+}
+
 export default slice.reducer;
 
 export interface Menu {
   open: boolean;
   popupOpen: boolean;
+  mainMenu: boolean;
 }

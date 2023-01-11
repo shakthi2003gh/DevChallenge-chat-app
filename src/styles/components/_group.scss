@@ -15,13 +15,16 @@
     .icon {
       display: grid;
       place-content: center;
-      width: 4.2rem;
+      min-width: 4.2rem;
       aspect-ratio: 1;
       border-radius: 0.8rem;
       background-color: var(--bg);
     }
 
     .name {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow-x: hidden;
       color: var(--clr-400);
     }
   }

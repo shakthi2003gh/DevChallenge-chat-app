@@ -17,4 +17,13 @@ body {
       display: flex;
     }
   }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    background-color: #00000040;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--bg-text-area);
+  }
 }
