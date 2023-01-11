@@ -1,15 +1,40 @@
-import { Input } from "../components";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { createGroup } from "../services/firestore";
 import { hideModal } from "../state/modal";
-import { useState } from "react";
+import { Input } from "../components";
+import { State } from "../state";
 
 const CreateChannelModal = ({}) => {
+  const { id } = useSelector((state: State) => state.user);
   const [channelName, setChannelName] = useState("");
   const [channelDescription, setChannelDescription] = useState("");
+
+  useEffect(() => {
+    window.addEventListener("keyup", handleClose);
+    return () => window.removeEventListener("keyup", handleClose);
+  }, []);
 
   const handleTyping = (action: any) => (e: any) => action(e.target.value);
 
   const handleCreate = () => {
+    if (channelName.trim() === "" || channelDescription.trim() === "") return;
+
+    const group = {
+      id: Date.now().toString(),
+      name: channelName,
+      description: channelDescription,
+      membersId: [id],
+      messagesId: Date.now().toString(),
+    };
+
+    createGroup(group);
+
     hideModal();
+  };
+
+  const handleClose = (e: any) => {
+    if (e.key === "Escape") hideModal();
   };
 
   return (

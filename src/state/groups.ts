@@ -22,5 +22,5 @@ export interface Group {
   name: string;
   membersId: string[];
   messagesId: string;
-  depscription: string;
+  description: string;
 }

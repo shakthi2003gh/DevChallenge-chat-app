@@ -1,18 +1,34 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { getGroups } from "../services/firestore";
+import { onSnapshot } from "firebase/firestore";
+import { userRef, getGroups } from "../services/firestore";
 import { State } from "../state";
+import { setUser, User } from "./../state/user";
 import { setGroups, Group } from "../state/groups";
 import { selectGroup } from "../state/selectedGroup";
 
 const Groups = ({ search }: { search: string }) => {
-  const userGroups = useSelector((state: State) => state.user.groupsId);
+  const user = useSelector((state: State) => state.user);
   const groups = useSelector((state: State) => state.groups);
   const { selectedGroup } = useSelector((state: State) => state.entities);
+
+  const { id: userId, groupsId: userGroups } = user;
 
   useEffect(() => {
     if (userGroups) loadGroups();
   }, [userGroups]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(userRef, (doc: any) => {
+      if (!userId) return;
+      const updateUser: User = doc.data()?.[userId];
+
+      if (updateUser.groupsId.length !== user.groupsId.length)
+        setUser(updateUser);
+    });
+
+    return unsubscribe;
+  }, [userId]);
 
   const loadGroups = async () => {
     const groups: Group[] = [];
