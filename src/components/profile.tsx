@@ -7,11 +7,24 @@ const Profile = () => {
   const user = useSelector((state: State) => state.user);
   const open = useSelector((state: State) => state.entities.menu.popupOpen);
 
+  const handleCopyUserid = () => {
+    navigator.clipboard.writeText(user.id);
+  };
+
   return (
     <div className="profile">
       <img src={user.photo} alt="" />
 
-      <span className="name">{user.name}</span>
+      <span className="name">
+        {user.name}
+        <span
+          title="Copy User Id"
+          className="material-symbols-rounded copy"
+          onClick={handleCopyUserid}
+        >
+          content_copy
+        </span>
+      </span>
 
       <span className="material-symbols-rounded" onClick={popupMenuToggle}>
         {open ? "expand_less" : "expand_more"}

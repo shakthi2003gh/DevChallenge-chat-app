@@ -28,9 +28,22 @@
     padding: 2.5rem 3.2rem;
 
     .channel-name,
-    .channel-member-list .title {
-      font-weight: var(--fw-700);
-      text-transform: uppercase;
+    .channel-member-list {
+      .head {
+        display: flex;
+        justify-content: space-between;
+
+        span:hover {
+          border-radius: 0.5rem;
+          background-color: var(--bg);
+          cursor: pointer;
+        }
+      }
+
+      .title {
+        font-weight: var(--fw-700);
+        text-transform: uppercase;
+      }
     }
 
     .channel-description {
@@ -49,6 +62,10 @@
         display: flex;
         align-items: center;
         gap: 2.2rem;
+
+        &:hover .copy {
+          opacity: 0.5;
+        }
       }
 
       img {
@@ -65,6 +82,13 @@
         white-space: nowrap;
         overflow-x: hidden;
         color: var(--clr-100);
+      }
+
+      .copy {
+        font-size: 100%;
+        opacity: 0;
+        transition: opacity 0.25s ease-in;
+        cursor: pointer;
       }
     }
   }

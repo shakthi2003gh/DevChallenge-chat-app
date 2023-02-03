@@ -1,11 +1,16 @@
 import { useSelector } from "react-redux";
-import { Members } from "../components";
 import { State } from "../state";
 import { showMainMenu } from "../state/menu";
+import { displayModal } from "./../state/modal";
+import { Members } from "../components";
 
 const ChannelMenu = () => {
   const group = useSelector((state: State) => state.entities.selectedGroup);
   const { name, description } = group;
+
+  const handleModal = () => {
+    displayModal("addMember", { groupId: group.id });
+  };
 
   return (
     <div className="channel-menu">
@@ -22,7 +27,14 @@ const ChannelMenu = () => {
         <div className="channel-description">{description}</div>
 
         <div className="channel-member-list">
-          <div className="title">Members</div>
+          <div className="head">
+            <div className="title">Members</div>
+
+            <span className="material-symbols-rounded" onClick={handleModal}>
+              add
+            </span>
+          </div>
+
           <Members />
         </div>
       </div>

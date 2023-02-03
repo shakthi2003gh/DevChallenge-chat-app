@@ -16,7 +16,7 @@ const MainMenu = () => {
   };
 
   const handleClick = () => {
-    displayModal("createChannel", {});
+    displayModal("createChannel");
   };
 
   return (

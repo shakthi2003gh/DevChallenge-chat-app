@@ -1,6 +1,10 @@
 import { useSelector } from "react-redux";
 import { State } from "../state";
-import { CreateUserModal, CreateChannelModal } from "./../sections";
+import {
+  CreateUserModal,
+  CreateChannelModal,
+  AddMemberModal,
+} from "./../sections";
 
 const Modal = ({ children: Children }: { children: any }) => {
   const modal = useSelector((state: State) => state.entities.modal);
@@ -14,6 +18,8 @@ const Modal = ({ children: Children }: { children: any }) => {
           {modal.name === "createChannel" && (
             <CreateChannelModal {...modal.props} />
           )}
+
+          {modal.name === "addMember" && <AddMemberModal {...modal.props} />}
         </div>
       )}
       {Children}

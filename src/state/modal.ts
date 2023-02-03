@@ -12,7 +12,7 @@ const slice = createSlice({
 
 const { display, hide } = slice.actions;
 
-export function displayModal(name: string, props: any) {
+export function displayModal(name: string, props: any = {}) {
   state.dispatch(display({ modal: { name, props: { ...props } } }));
 }
 

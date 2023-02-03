@@ -18,13 +18,13 @@ const Chat = () => {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(messageRef, (doc) => {
-      const newMessages = doc.data()?.[messagesId];
+      const newMessages = doc.data()?.[messagesId].messages;
 
-      if (newMessages !== messages) getMessages(messagesId);
+      if (newMessages.length !== messages.length) getMessages(messagesId);
     });
 
     return unsubscribe;
-  }, []);
+  }, [messagesId]);
 
   useEffect(() => {
     const container = document.querySelector(".messages") as HTMLDivElement;

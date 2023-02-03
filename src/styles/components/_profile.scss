@@ -15,9 +15,22 @@
   }
 
   .name {
+    display: flex;
+    align-items: center;
     font-size: var(--fs-700);
     font-weight: var(--fw-700);
     text-transform: capitalize;
+
+    .copy,
+    .copied {
+      font-size: 100%;
+      margin-left: 1rem;
+    }
+
+    .copy {
+      cursor: pointer;
+      opacity: 0.5;
+    }
   }
 
   > .material-symbols-rounded {

@@ -5,7 +5,7 @@ import { MessageInterface } from "../state/messages";
 import { Group } from "../state/groups";
 
 export const userRef = doc(db, "users", "k1In6xx8Fpk7pDG4GG1C");
-const groupsRef = doc(db, "groups", "uM8ylGqyF7639R39wDHx");
+export const groupsRef = doc(db, "groups", "uM8ylGqyF7639R39wDHx");
 export const messageRef = doc(db, "messagesRoom", "oxtEMWPFRsqTT9LjY0TQ");
 
 export async function getUsers() {
@@ -31,7 +31,7 @@ export async function createGroup(group: Group) {
   const groups = await getGroups();
   const id = group.id;
 
-  setDoc(groupsRef, { ...groups, [id]: group });
+  await setDoc(groupsRef, { ...groups, [id]: { ...group, membersId: [] } });
   addUserInGroup(group.membersId[0], id);
   newMessageSection(id);
 }
@@ -43,8 +43,14 @@ export async function getGroup(groupId: string) {
 
 export async function addUserInGroup(userId: string, groupId: string) {
   const users = await getUsers();
+  const groups = await getGroups();
+
+  if (groups?.[groupId].membersId.includes(userId)) return;
+
   users?.[userId].groupsId.push(groupId);
+  groups?.[groupId].membersId.push(userId);
   setDoc(userRef, users);
+  setDoc(groupsRef, groups);
 }
 
 export async function newMessageSection(id: string) {
