@@ -3,7 +3,7 @@ import state from ".";
 
 const slice = createSlice({
   name: "menu",
-  initialState: { open: true, popupOpen: false, mainMenu: true },
+  initialState: { open: false, popupOpen: false, mainMenu: true },
   reducers: {
     open: (menu) => {
       menu.open = true;
