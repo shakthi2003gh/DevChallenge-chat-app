@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { State } from "../state";
 import { menuClose, menuOpen } from "../state/menu";
-import { Chat, SideBar } from "../sections";
+import { Chat, SideBar, WelcomeScreen } from "../sections";
 
 const ChatPage = () => {
   const selectedGroupName = useSelector(
@@ -17,7 +17,7 @@ const ChatPage = () => {
   return (
     <div className="chat-app">
       <SideBar />
-      {selectedGroupName && <Chat />}
+      {selectedGroupName ? <Chat /> : <WelcomeScreen />}
     </div>
   );
 };

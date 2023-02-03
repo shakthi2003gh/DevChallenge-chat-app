@@ -1,3 +1,4 @@
+export { default as WelcomeScreen } from "./welcomeScreen";
 export { default as CreateUserModal } from "./createUserModal";
 export { default as CreateChannelModal } from "./createChannelModal";
 export { default as AddMemberModal } from "./addMemberModal";

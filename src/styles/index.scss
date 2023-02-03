@@ -26,4 +26,20 @@ body {
   ::-webkit-scrollbar-thumb {
     background-color: var(--bg-text-area);
   }
+
+  .welcome-screen {
+    display: grid;
+    place-content: center;
+    place-items: center;
+    width: 100%;
+    min-height: 100vh;
+
+    button {
+      margin-top: 3rem;
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
 }

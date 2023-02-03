@@ -10,4 +10,8 @@
     color: var(--clr-500);
     background-color: var(--bg-btn);
   }
+
+  &:disabled {
+    opacity: 0.8;
+  }
 }
